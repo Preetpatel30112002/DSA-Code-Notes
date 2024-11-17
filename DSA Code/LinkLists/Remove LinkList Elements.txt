@@ -1,0 +1,22 @@
+https://leetcode.com/problems/remove-linked-list-elements/
+
+Remove LinkList Elements
+
+time:O(n)
+space:O(1)
+
+Approach: Iterative Elements Removal 
+
+class Solution:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+        curr = head
+
+        while head and head.val == val:
+            head = head.next
+
+        while curr and curr.next:
+            if curr.next.val == val:
+                curr.next = curr.next.next
+            else:
+                curr = curr.next
+        return head

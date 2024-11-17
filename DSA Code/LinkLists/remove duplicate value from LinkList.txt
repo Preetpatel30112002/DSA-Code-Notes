@@ -1,0 +1,30 @@
+https://leetcode.com/problems/remove-duplicates-from-sorted-list/
+
+Remove-Duplicates-from-sorted-list
+
+time:O(n)
+space:O(1)
+
+approach:Two-Pointer Technique
+
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return None
+        
+        temp = head
+        temp2 = head.next
+
+        while temp2:
+            if temp2.val == temp.val:
+                if temp2.next is None:
+                    temp.next = None
+                    break
+                temp2 = temp2.next
+                temp.next = temp2
+            else:
+                temp = temp2
+                temp2 = temp2.next
+        return head
+
+

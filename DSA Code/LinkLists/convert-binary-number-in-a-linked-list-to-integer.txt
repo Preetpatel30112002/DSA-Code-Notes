@@ -1,0 +1,32 @@
+https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/
+
+#convert-binary-number-in-a-linked-list-to-integer
+
+Time:O(n)
+Space:O(1)
+
+approach = String Concatenation and Direct Binary Conversion"
+
+class Solution:
+    def getDecimalValue(self, head: ListNode) -> int:
+        curr = head
+        res_str = ''
+
+        while curr:
+            res_str += str(curr.val)
+            curr = curr.next
+
+        return int(res_str,2)
+
+Time:O(n)
+Space:O(1)
+
+Concept/Approach = "Bit Manipulation" or "Binary Accumulation"
+
+class Solution:
+    def getDecimalValue(self, head: ListNode) -> int:
+        answer = 0
+        while head: 
+            answer = 2*answer + head.val 
+            head = head.next 
+        return answer   
