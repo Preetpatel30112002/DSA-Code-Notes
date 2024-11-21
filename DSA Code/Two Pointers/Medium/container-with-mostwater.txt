@@ -1,0 +1,32 @@
+https://neetcode.io/problems/max-water-container
+
+Max Water Container
+
+time-O(n)
+space-O(1)
+
+code:
+
+(2 pOinters):
+
+def maxArea(self, heights: List[int]) -> int:
+        l,r = 0,len(heights)-1
+        res = 0
+
+        while l<r:
+            area = min(heights[l],heights[r])*(r-l)
+            res = max(res,area)
+            if heights[l]<=heights[r]:
+                l+=1
+            else:
+                r-=1
+        return res
+
+(Brute Force):
+
+def maxArea(self, heights: List[int]) -> int:(time[o(n^2)],space[o(1)])
+        res = 0
+        for i in range(len(heights)):
+            for j in range(i + 1, len(heights)):
+                res = max(res, min(heights[i], heights[j]) * (j - i))
+        return res

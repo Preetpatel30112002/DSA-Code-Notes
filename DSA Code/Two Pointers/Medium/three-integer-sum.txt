@@ -1,0 +1,47 @@
+https://neetcode.io/problems/three-integer-sum
+
+three-integer-sum
+
+time-o(n^2)
+space-o(1)or(n)
+
+Code:
+(Brute Force):
+
+	def threeSum(self, nums: List[int]) -> List[List[int]]:
+        res = set()
+        nums.sort()
+        for i in range(len(nums)):
+            for j in range(i+1,len(nums)):
+                for k in range(j+1,len(nums)):
+                    if nums[i]+nums[j]+nums[k] == 0:
+                        res.add(tuple([nums[i],nums[j],nums[k]]))
+        return [list(i) for i in res]
+
+(2 pOinters):
+
+def threeSum(self, nums: List[int]) -> List[List[int]]:
+	res = list()
+        nums.sort()
+
+        for i,n in enumerate(nums):
+            if n>0:
+                break
+            elif i>0 and n == nums[i-1]:
+                continue
+            
+            low,high = i+1,len(nums)-1
+            while low < high:
+                threesum = n + nums[low] + nums[high]
+                if threesum > 0:
+                    high -= 1
+                elif threesum < 0:
+                    low += 1
+                else:
+                    res.append([n,nums[low],nums[high]])
+                    low+=1
+                    high-=1
+                    while nums[low] == nums[low-1] and low<high:
+                        low+=1
+        return res 
+
