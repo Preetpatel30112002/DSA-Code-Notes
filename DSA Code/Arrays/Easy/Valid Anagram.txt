@@ -1,0 +1,36 @@
+https://leetcode.com/problems/valid-anagram/
+
+Valid Anagram
+
+Time:O(n)
+Space:O(k)
+
+approach:hash Table(use dict)
+
+first store ele in dict from str1 and then for str2 but if duplicate ele found then decrease the dict ele value if and at last check if all dict value are 0 or not.
+
+code:
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        
+        dict_store = {}
+
+        for i in s:
+            if i not in dict_store:
+                dict_store[i] = 1
+            else:
+                dict_store[i] += 1
+        
+        for j in t:
+            if j in dict_store:
+                dict_store[j] -= 1
+            else:
+                return False
+
+        for val in dict_store.values():
+            if val != 0:
+                return False
+        return True
