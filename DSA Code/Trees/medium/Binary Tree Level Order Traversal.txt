@@ -1,0 +1,63 @@
+
+
+#Binary tree level order traversal
+
+time:O(n)
+space:O(n)
+
+approach:BFS,deque
+-first remove node from tree and then check for its childs and if present 
+add them to queue and process continues.
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        res=[]
+        q= deque()
+
+
+        if root:
+            q.append(root)
+
+        while q:
+            val=[]
+            for i in range(len(q)):
+                node=q.popleft()
+                val.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            res.append(val)
+        return res
+
+OR
+
+
+if not root:
+            return []
+
+        res = []
+        queue = [root]
+
+        while queue:
+            level_size = len(queue)
+            level = []
+
+            for _ in range(level_size):
+                node = queue.pop(0)
+                level.append(node.val)
+
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            res.append(level)
+
+        return res
