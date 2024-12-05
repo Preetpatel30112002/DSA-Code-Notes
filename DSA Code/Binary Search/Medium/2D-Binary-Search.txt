@@ -1,0 +1,35 @@
+https://neetcode.io/problems/search-2d-matrix
+
+Search a 2D Matrix
+
+Time-O(log(m*n))
+Space-O(1)
+
+Code:
+
+(Brute Force)
+
+def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        for row in matrix:
+            for col in row:
+                if col == target:
+                    return True
+        return False
+
+(Binary Search)
+
+def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        rows, cols = len(matrix),len(matrix[0])
+
+        l,r = 0,rows*cols-1
+
+        while l<=r:
+            m = l+(r-l)//2
+            row, col = m // cols, m % cols
+            if target > matrix[row][col]:
+                l = m + 1
+            elif target < matrix[row][col]:
+                r = m - 1
+            else:
+                return True
+        return False
