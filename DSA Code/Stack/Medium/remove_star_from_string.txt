@@ -1,0 +1,17 @@
+https://leetcode.com/problems/removing-stars-from-a-string/description/
+
+Remove Star from a string
+
+time-O(n)
+space-O(n)
+
+code-
+
+def removeStars(self, s: str) -> str:
+	ans=[]
+        for i in s:
+            if i=='*':
+                ans.pop()
+            else:
+                ans+=[i]
+        return "".join(ans)
