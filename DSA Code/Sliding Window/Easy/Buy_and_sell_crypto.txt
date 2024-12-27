@@ -1,0 +1,30 @@
+https://neetcode.io/problems/buy-and-sell-crypto
+
+Buy-and-sell-crypto
+
+Time-O(n)
+Space-O(1)
+
+Code:
+
+(Brute Force)
+
+	def maxProfit(self, prices: List[int]) -> int:
+        max_profit = 0
+        for buy in range(len(prices)):
+            for sell in range(buy+1,len(prices)):
+                gain_amt = prices[sell] - prices[buy]
+                if max_profit < gain_amt:
+                    max_profit = gain_amt
+        return max_profit
+(Two Pointers)
+
+	def maxProfit(self, prices: List[int]) -> int:
+        while r < len(prices):
+            if prices[l]<prices[r]:
+                Profit = prices[r]-prices[l]
+                maxProfit = max(Profit,maxProfit)
+            else:
+                l = r
+            r+=1
+        return maxProfit
